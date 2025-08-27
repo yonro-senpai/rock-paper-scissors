@@ -28,6 +28,7 @@ function playGame() {
                 humanScore = humanScore + 1;
                 console.log("You Win! Rock beats Scissors")
             }
+            console.log("Human score: " + humanScore + "   Computer's score: " + computerScore)
         } else if (human === "paper") {
             if (computer === "paper") {
                 console.log("It's a tie! Both of us choice 'Paper' ")
@@ -38,7 +39,8 @@ function playGame() {
                 humanScore = humanScore + 1;
                 console.log("You Win! Paper beats Rock")
             }
-        } else {
+            console.log("Human score: " + humanScore + "   Computer's score: " + computerScore)
+        } else if (human === "scissors") {
             if (computer === "scissors") {
                 console.log("It's a tie! Both of us choice 'Scissors' ")
             } else if (computer === "rock") {
@@ -48,6 +50,7 @@ function playGame() {
                 humanScore = humanScore + 1;
                 console.log("You Win! Scissors beats Paper")
             }
+            console.log("Human score: " + humanScore + "   Computer's score: " + computerScore)
         }
     }
 
@@ -56,13 +59,19 @@ function playGame() {
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
 
-        console.log("Your Choice " + humanSelection)
-        console.log("Computer's Choice " + computerSelection)
+        console.log("Your Choice " + humanSelection + ", Computer's Choice " + computerSelection)
         playRound(humanSelection, computerSelection);
         round = round + 1;
     }
-    console.log("Your scored is " + humanScore);
-    console.log("Computer's score is " + computerScore);
+    console.log("Final Scores are here!")
+    if (humanScore === computerScore) {
+        console.log("It's a tie! Both scored " + computerScore);
+    } else if (humanScore > computerScore) {
+        console.log("You Win! You beat Computer by " + (humanScore - computerScore) + " point")
+    } else {
+        console.log("Better Luck Next time, You Lose! Computer beats you by " + (computerScore - humanScore) + " point")
+
+    }
 }
 
 playGame()
